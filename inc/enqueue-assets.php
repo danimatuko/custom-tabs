@@ -25,6 +25,14 @@ function custom_tabs_enqueue_assets() {
         'all' // Media type
     );
 
+
+    wp_enqueue_style(
+        'typekit-fonts',
+        'https://p.typekit.net/p.css?s=1&k=wuz0gtr&ht=tk&f=139.175&a=87786064&app=typekit&e=css'
+    );
+
+
+
     // Enqueue scripts
     wp_enqueue_script(
         'custom-tabs-script', // Handle
