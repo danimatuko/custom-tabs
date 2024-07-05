@@ -1,6 +1,5 @@
 <?php
 
-
 function custom_tabs_shortcode($atts, $content = null) {
     // Retrieve settings
     $options = get_option('custom_tabs_settings');
@@ -11,26 +10,48 @@ function custom_tabs_shortcode($atts, $content = null) {
 <div class="tabs-container">
 
     <div class="tabs">
-        <?php for ($i = 1; $i <= 6; $i++) : ?>
-        <?php if (!empty($options['tab' . $i . '_title']) && !empty($options['tab' . $i . '_content'])) : ?>
+        <!-- Static First Tab -->
         <div class="tab">
-            <button class="tablinks <?php echo $i === 1 ? 'active' : ''; ?>"
-                onclick="openTab(event, 'tab<?php echo $i; ?>')">
+            <button class="tablinks active" onclick="openTab(event, 'staticTab')">Static Tab</button>
+        </div>
+
+        <!-- Dynamically Generated Tabs -->
+        <?php
+            for ($i = 1; $i <= 6; $i++) :
+                if (!empty($options['tab' . $i . '_title']) && !empty($options['tab' . $i . '_content'])) :
+            ?>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'tab<?php echo $i; ?>')">
                 <?php echo esc_html($options['tab' . $i . '_title']); ?>
             </button>
         </div>
-        <?php endif; ?>
-        <?php endfor; ?>
+        <?php
+                endif;
+            endfor;
+            ?>
     </div>
+
     <div class="div">
-        <?php for ($i = 1; $i <= 6; $i++) : ?>
-        <?php if (!empty($options['tab' . $i . '_title']) && !empty($options['tab' . $i . '_content'])) : ?>
-        <div id="tab<?php echo $i; ?>" class="tabcontent <?php echo $i === 1 ? 'active' : ''; ?>">
+        <!-- Static Tab Content -->
+        <div id="staticTab" class="tabcontent active">
+            <h3>Static Tab Content</h3>
+            <?php include plugin_dir_path(__FILE__) . '../partials/static-tab-content.php'; 
+                ?>
+        </div>
+
+        <!-- Dynamically Generated Tab Content -->
+        <?php
+            for ($i = 1; $i <= 6; $i++) :
+                if (!empty($options['tab' . $i . '_title']) && !empty($options['tab' . $i . '_content'])) :
+            ?>
+        <div id="tab<?php echo $i; ?>" class="tabcontent">
             <h3><?php echo esc_html($options['tab' . $i . '_title']); ?></h3>
             <p><?php echo wp_kses_post($options['tab' . $i . '_content']); ?></p>
         </div>
-        <?php endif; ?>
-        <?php endfor; ?>
+        <?php
+                endif;
+            endfor;
+            ?>
     </div>
 
     <picture class="logos">
