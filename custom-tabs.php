@@ -18,3 +18,4 @@ if (!defined('ABSPATH')) {
 // Include additional PHP files
 include plugin_dir_path(__FILE__) . 'inc/enqueue-assets.php';
 include plugin_dir_path(__FILE__) . 'inc/tab-control.php';
+include plugin_dir_path(__FILE__) . 'inc/custom_tabs_options_page.php';
