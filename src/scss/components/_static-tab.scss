@@ -93,3 +93,18 @@
     }
   }
 }
+
+@media only screen and (min-width: 1024px) {
+  .grid-wrapper {
+    flex-direction: row;
+  }
+
+  .box-pair {
+    flex-direction: column;
+  }
+
+  .grid .box.box-main .customer {
+    justify-content: flex-start;
+    gap: 30px;
+  }
+}
