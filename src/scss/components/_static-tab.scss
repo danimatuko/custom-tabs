@@ -1,0 +1,95 @@
+.grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: flex;
+  gap: 20px;
+  // padding: 22px;
+
+  &.box-pair {
+    & > .box-light {
+      strong {
+        font-weight: 700;
+        font-size: 36px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+
+    & > .box-dark {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .arrow {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        width: 21.95px;
+      }
+    }
+  }
+  .box {
+    border-radius: 15px;
+    padding: 22px;
+
+    &.box-dark {
+      background-color: $color-dark;
+      color: $color-light;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: lighten($color-dark, 10%);
+      }
+    }
+
+    &.box-light {
+      background-color: $color-light;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: lighten($color-light, 10%);
+      }
+    }
+
+    &.box-main {
+      img.quotation-mark {
+        width: 30px;
+        height: 25px;
+        margin-bottom: 20px;
+      }
+      q {
+        all: unset;
+        display: block;
+        margin-bottom: 30px;
+
+        &::before {
+          content: '';
+        }
+      }
+
+      .customer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+
+        .name {
+          font-weight: 700;
+        }
+      }
+      .company {
+        img {
+          width: 88.5px;
+          height: 27px;
+        }
+      }
+    }
+  }
+}
